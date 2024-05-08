@@ -10,6 +10,8 @@
     }else{
         if(false){
 
+        }else if(ISSET($_GET['register']) && $_GET['register'] == true){
+            echo $controller->_content('v_register');
         }else{
             echo $controller->_content('v_login');
         }
