@@ -1,0 +1,15 @@
+{
+    "name": "diego/docker-lamp",
+    "description": "Docker for LAMP apps",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Diego Ramirez",
+            "email": "dieghoramreyes@gmail.com"
+        }
+    ],
+    "require": {
+        "symfony/dotenv": "^7.0"
+    }
+}

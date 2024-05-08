@@ -1,0 +1,35 @@
+version: '3'
+services:
+  php:
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./src/:/var/www/html
+    ports:
+      - 8080:80
+
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: tasks
+    volumes:
+      - ./src/model/database:/docker-entrypoint-initdb.d
+    ports:
+      - 3306:3306
+
+  phpmyadmin:
+    image: phpmyadmin
+    ports:
+      - 8081:80
+    environment:
+      - PMA_HOST=mysql
+      - PMA_PORT=3306
+
+  composer:
+    image: composer:latest
+    volumes:
+      - ./src/:/var/www/html
+    working_dir: /var/www/html
+    command: ["install"]
